@@ -61,24 +61,32 @@ class CheckingAccount implements HasMenu{
   } // end getBalanceString
 
   public void makeDeposit(){
-    Scanner input = new Scanner(System.in);
     System.out.print("How much to deposit? ");
-    double depo = input.nextDouble();
+    double depo = getDouble();
     this.balance = this.balance + depo;
     System.out.println("New balance: " + this.getBalanceString());
   } // end makeDeposit
 
   public void makeWithdrawal(){
-    Scanner input = new Scanner(System.in);
     System.out.print("How much to withdraw? ");
-    double repo = input.nextDouble();
+    double repo = getDouble();
     this.balance = this.balance - repo;
     System.out.println("New balance: " + this.getBalanceString());
   } // end makeWithdrawal
 
   private double getDouble(){
-    double fortnite = 0;
-    return fortnite;
+    Scanner input = new Scanner(System.in);
+    double num = 0d;
+    String stringNum = input.nextLine();
+    try{
+      num = Double.parseDouble(stringNum);
+    } // end try
+    catch(Exception e){
+      System.out.print("That is not a valid input");
+      num = 0;
+    } // end catch
+    
+    return num;
   } // end getDouble
 
 } // end CheckingAccount
