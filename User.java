@@ -7,31 +7,38 @@ abstract class User{
   String PIN;
 
   public boolean login(){
-    
-    return
+    Scanner input = new Scanner(System.in);
+    System.out.print("User name: ");
+    userName = input.nextLine();
+    System.out.print("PIN: ");
+    PIN = input.nextLine();
+    return true;
   } // end login
 
   public boolean login(userName, PIN){
-    
-    return
+    if(userName == this.userName){
+      if(PIN == this.PIN){
+        System.out.print("Login Successful");
+	return true;
+      } // end if
+    } // end if
+    return false;
   } // end login
 
   public void setUserName(userName){
-    
+    this.userName = userName;
   } // end setUserName
 
   public String getUserName(){
-    
-    return
+    return this.userName;
   } // end getUserName
 
   public void setPIN(PIN){
-    
+    this.PIN = PIN;
   } // end setPIN
 
   public String getPIN(){
-    
-    return
+    return this.PIN;
   } // end getPIN
 
   abstract String getReport(){
