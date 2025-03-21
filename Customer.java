@@ -7,7 +7,8 @@ class Customer extends User{
   SavingsAccount savings;
 
   public Customer(){
-   
+   this.userName = admin;
+   this.PIN = "0000";
   } // end Customer
 
   public Customer(userName, PIN){
@@ -27,7 +28,7 @@ class Customer extends User{
         keepGoing=false;
       } // end if
       if(response.equals("1")){
-        checking,start();
+        checking.start();
       } // end if
       if(response.equals("2")){
         savings.start();
@@ -57,8 +58,9 @@ class Customer extends User{
   } // end changePin
 
   public String getReport(){
-    user
-    blanace
+    System.out.println("User: " + this.userName);
+    checking.checkBalance;
+    savings.checkBalance;
   } // end getReport
 
 } // end Customer

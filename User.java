@@ -12,7 +12,12 @@ abstract class User implements HasMenu{
     userName = input.nextLine();
     System.out.print("PIN: ");
     PIN = input.nextLine();
-    return true;
+    if(userName.equals("admin")){
+      if(PIN.equals("0000")){
+        return true;
+      }
+    }
+    return false;
     // admin
   } // end login
 
