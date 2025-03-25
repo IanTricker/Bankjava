@@ -21,9 +21,9 @@ abstract class User implements HasMenu{
     // admin
   } // end login
 
-  public boolean login(userName, PIN){
-    if(userName == this.userName){
-      if(PIN == this.PIN){
+  public boolean login(String userName,String PIN){
+    if(userName.equals(this.userName)){
+      if(PIN.equals(this.PIN)){
         System.out.print("Login Successful");
 	return true;
       } // end if
@@ -40,7 +40,7 @@ abstract class User implements HasMenu{
   } // end getUserName
 
   public void setPIN(String pin){
-    if(pin.matches("^\\d{4}$)"){
+    if(pin.matches("^\\d{4}$)")){
       this.PIN=pin;
     }
     else{
@@ -52,7 +52,5 @@ abstract class User implements HasMenu{
     return this.PIN;
   } // end getPIN
 
-  abstract String getReport(){
-    
-  } // end getReport
+  abstract String getReport();
 } // end User

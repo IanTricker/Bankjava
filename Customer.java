@@ -7,17 +7,17 @@ class Customer extends User{
   SavingsAccount savings;
 
   public Customer(){
-   this.userName = admin;
+   this.userName = "admin";
    this.PIN = "0000";
   } // end Customer
 
-  public Customer(userName, PIN){
+  public Customer(String userName,String PIN){
     
   } // end Customer
   
   public static void main(String[] args){
     Customer cu = new Customer();
-    start.cu()
+    cu.start();
   } // end main
 
   public void start(){
@@ -59,8 +59,9 @@ class Customer extends User{
 
   public String getReport(){
     System.out.println("User: " + this.userName);
-    checking.checkBalance;
-    savings.checkBalance;
+    checking.checkBalance();
+    savings.checkBalance();
+    return "fortnite";
   } // end getReport
 
 } // end Customer
