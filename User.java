@@ -22,11 +22,9 @@ abstract class User implements HasMenu{
   } // end login
 
   public boolean login(String userName,String PIN){
-    if(userName.equals(this.userName)){
-      if(PIN.equals(this.PIN)){
-        System.out.print("Login Successful");
-	return true;
-      } // end if
+    if (userName.equals(this.userName) && PIN.equals(this.PIN)) {
+      System.out.println("Login Successful");
+       return true;
     } // end if
     return false;
   } // end login

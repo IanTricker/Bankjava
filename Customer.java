@@ -12,7 +12,8 @@ class Customer extends User{
   } // end Customer
 
   public Customer(String userName,String PIN){
-    
+    this.userName = userName;
+    this.PIN = PIN;
   } // end Customer
   
   public static void main(String[] args){

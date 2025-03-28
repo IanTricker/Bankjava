@@ -9,8 +9,8 @@ class Bank implements HasMenu{
   public Bank(){
     // uncomment the next two lines to refresh data
 
-    //this.loadSampleCustomers();
-    //this.saveCustomers();
+    this.loadSampleCustomers();
+    this.saveCustomers();
     this.loadCustomers();
     this.start();
     this.saveCustomers();
@@ -29,6 +29,7 @@ class Bank implements HasMenu{
     System.out.println("2) Login as customer\n");
     System.out.print("Action: ");
     String user = input.nextLine();
+    System.out.println();
     return user;
   } // end menu
 
@@ -76,16 +77,19 @@ class Bank implements HasMenu{
     String userName = input.nextLine();
     System.out.print("PIN: ");
     String pin = input.nextLine();
+    System.out.println();
 
     Customer currentCustomer = null;
     for(Customer customer: customers){
+      System.out.println(customer.getUserName());
       if(customer.login(userName, pin)){
         currentCustomer = customer;
+        currentCustomer.start();
       } // end if
     } // end for
 
     if(currentCustomer == null){
-      System.out.println("No customer found");
+      System.out.println("No customer found\n");
     } // end if
     else{
       currentCustomer.start();
@@ -105,7 +109,7 @@ class Bank implements HasMenu{
     String userName = input.nextLine();
     System.out.print("PIN: ");
     String pin = input.nextLine();
-
+    System.out.println();
     Customer newCustomer = new Customer(userName, pin);
     customers.add(newCustomer);
   } // end addUser
@@ -117,15 +121,32 @@ class Bank implements HasMenu{
   } // end applyInterest
 
   public void loadSampleCustomers(){
-    
+   customers.add(new Customer("Alice", "1234"));
+   customers.add(new Customer("Bob", "5678"));
+   customers.add(new Customer("Cindy", "9101"));
   } // end loadSampleCustomers
 
   public void loadCustomers(){
-    
+    try{
+      FileInputStream fIn = new FileInputStream("SerialBank.dat");
+      ObjectInputStream obIn = new ObjectInputStream(fIn);
+      customers = (CustomerList)obIn.readObject();
+    } catch (Exception e){
+      System.out.println(e.getMessage());
+    } // end try catch
   } // end loadCustomers
 
   public void saveCustomers(){
     
+    try{
+      FileOutputStream fo = new FileOutputStream("SerialBank.dat");
+      ObjectOutputStream obOut = new ObjectOutputStream(fo);
+      obOut.writeObject(customers);
+    } catch (Exception e){
+      System.out.println(e.getMessage());
+    } // end try catch
   } // end saveCustomers
+
+  class CustomerList extends ArrayList<Customer>{}
 
 } // end Bank
