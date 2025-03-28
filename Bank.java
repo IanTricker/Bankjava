@@ -43,7 +43,7 @@ class Bank implements HasMenu{
         startAdmin();
       } // end if
       if(response.equals("2")){
-        //userlogr
+        loginAsCustomer();
       } // end if
     } // end while
   } // end start
@@ -51,6 +51,7 @@ class Bank implements HasMenu{
   public void startAdmin(){
     Scanner input = new Scanner(System.in);
     boolean keepGoing=true;
+    keepGoing = admin.login();
     while(keepGoing){
       String response = admin.menu();
       if(response.equals("0")){
@@ -58,7 +59,7 @@ class Bank implements HasMenu{
       } // end if
       if(response.equals("1")){
         fullCustomerReport();
-      }
+      } // end if
       if(response.equals("2")){
         addUser();
       } // end if
@@ -93,7 +94,7 @@ class Bank implements HasMenu{
 
   public void fullCustomerReport(){
     for(Customer customer: customers){
-      customers.getReport();
+      System.out.println(customer.getReport());
     } // end for
   } // end fullCustomerReport
 
@@ -105,15 +106,13 @@ class Bank implements HasMenu{
     System.out.print("PIN: ");
     String pin = input.nextLine();
 
-    Customer userName = new Customer();
-    userName.this.userName = userName;
-    userName.this.PIN = pin;
-    customers.add(userName);
+    Customer newCustomer = new Customer(userName, pin);
+    customers.add(newCustomer);
   } // end addUser
 
   public void applyInterest(){
     for(Customer customer: customers){
-      customers.calcInterest();
+      customer.savings.calcInterest();
     } // end for
   } // end applyInterest
 
