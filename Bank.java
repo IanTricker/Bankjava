@@ -6,6 +6,16 @@ class Bank implements HasMenu{
   Admin admin = new Admin();
   ArrayList<Customer> customers = new ArrayList<Customer>();
 
+  public Bank(){
+    // uncomment the next two lines to refresh data
+
+    //this.loadSampleCustomers();
+    //this.saveCustomers();
+    this.loadCustomers();
+    this.start();
+    this.saveCustomers();
+  } // end construstor
+
   public static void main(String[] args){
     Bank ba = new Bank();
     ba.start();
@@ -47,15 +57,76 @@ class Bank implements HasMenu{
         keepGoing=false;
       } // end if
       if(response.equals("1")){
-        System.out.println("John, 1000, 20");
+        fullCustomerReport();
       }
       if(response.equals("2")){
-        System.out.println("add bob");
+        addUser();
       } // end if
       if(response.equals("3")){
-        System.out.print("More money");
+        applyInterest();
       } // end if
     } // end while
   } // end startAdmin
+
+  public void loginAsCustomer(){
+    Scanner input = new Scanner(System.in);
+    System.out.println("Customer login");
+    System.out.print("User name: ");
+    String userName = input.nextLine();
+    System.out.print("PIN: ");
+    String pin = input.nextLine();
+
+    Customer currentCustomer = null;
+    for(Customer customer: customers){
+      if(customer.login(userName, pin)){
+        currentCustomer = customer;
+      } // end if
+    } // end for
+
+    if(currentCustomer == null){
+      System.out.println("No customer found");
+    } // end if
+    else{
+      currentCustomer.start();
+    } // end else
+  } // end loginAsCustomer
+
+  public void fullCustomerReport(){
+    for(Customer customer: customers){
+      customers.getReport();
+    } // end for
+  } // end fullCustomerReport
+
+  public void addUser(){
+    Scanner input = new Scanner(System.in);
+    System.out.println("Customer login");
+    System.out.print("User name: ");
+    String userName = input.nextLine();
+    System.out.print("PIN: ");
+    String pin = input.nextLine();
+
+    Customer userName = new Customer();
+    userName.this.userName = userName;
+    userName.this.PIN = pin;
+    customers.add(userName);
+  } // end addUser
+
+  public void applyInterest(){
+    for(Customer customer: customers){
+      customers.calcInterest();
+    } // end for
+  } // end applyInterest
+
+  public void loadSampleCustomers(){
+    
+  } // end loadSampleCustomers
+
+  public void loadCustomers(){
+    
+  } // end loadCustomers
+
+  public void saveCustomers(){
+    
+  } // end saveCustomers
 
 } // end Bank
