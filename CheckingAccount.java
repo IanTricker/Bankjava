@@ -1,7 +1,7 @@
 import java.util.*;
 import java.io.*;
 
-class CheckingAccount implements HasMenu{
+class CheckingAccount implements HasMenu, Serializable{
   double balance;
 
   public static void main(String[] args){
@@ -92,5 +92,6 @@ class CheckingAccount implements HasMenu{
   public void setBalance(double balance){
     this.balance = balance;
   } // end setBalance
+
 
 } // end CheckingAccount

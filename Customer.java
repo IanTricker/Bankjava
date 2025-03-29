@@ -1,7 +1,7 @@
 import java.util.*;
 import java.io.*;
 
-class Customer extends User{
+class Customer extends User implements Serializable{
   
   CheckingAccount checking;
   SavingsAccount savings;
@@ -66,5 +66,6 @@ class Customer extends User{
     savings.checkBalance();
     return "";
   } // end getReport
+
 
 } // end Customer

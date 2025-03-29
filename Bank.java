@@ -1,7 +1,7 @@
 import java.util.*;
 import java.io.*;
 
-class Bank implements HasMenu{
+class Bank implements HasMenu, Serializable{
 
   Admin admin = new Admin();
   ArrayList<Customer> customers = new ArrayList<Customer>();
@@ -9,8 +9,8 @@ class Bank implements HasMenu{
   public Bank(){
     // uncomment the next two lines to refresh data
 
-    this.loadSampleCustomers();
-    this.saveCustomers();
+    //this.loadSampleCustomers();
+    //this.saveCustomers();
     this.loadCustomers();
     this.start();
     this.saveCustomers();
@@ -145,7 +145,6 @@ class Bank implements HasMenu{
   } // end loadCustomers
 
   public void saveCustomers(){
-    
     try{
       FileOutputStream fo = new FileOutputStream("SerialBank.dat");
       ObjectOutputStream obOut = new ObjectOutputStream(fo);
