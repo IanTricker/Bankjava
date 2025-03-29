@@ -14,7 +14,7 @@ class CheckingAccount implements HasMenu{
   }  // end CheckingAccount constructor
 
   public CheckingAccount(double balance){
-
+    this.balance = balance;
   } // end CheckingAcount constructor
 
   public void start(){
@@ -88,5 +88,9 @@ class CheckingAccount implements HasMenu{
     
     return num;
   } // end getDouble
+
+  public void setBalance(double balance){
+    this.balance = balance;
+  } // end setBalance
 
 } // end CheckingAccount

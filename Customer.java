@@ -14,6 +14,8 @@ class Customer extends User{
   public Customer(String userName,String PIN){
     this.userName = userName;
     this.PIN = PIN;
+    this.checking = new CheckingAccount();
+    this.savings = new SavingsAccount();
   } // end Customer
   
   public static void main(String[] args){
@@ -62,7 +64,7 @@ class Customer extends User{
     System.out.println("User: " + this.userName);
     checking.checkBalance();
     savings.checkBalance();
-    return "fortnite";
+    return "";
   } // end getReport
 
 } // end Customer

@@ -111,6 +111,8 @@ class Bank implements HasMenu{
     String pin = input.nextLine();
     System.out.println();
     Customer newCustomer = new Customer(userName, pin);
+    newCustomer.checking.setBalance(0);
+    newCustomer.savings.setBalance(0);
     customers.add(newCustomer);
   } // end addUser
 
@@ -121,9 +123,15 @@ class Bank implements HasMenu{
   } // end applyInterest
 
   public void loadSampleCustomers(){
-   customers.add(new Customer("Alice", "1234"));
-   customers.add(new Customer("Bob", "5678"));
-   customers.add(new Customer("Cindy", "9101"));
+     customers.add(new Customer("Alice", "1234"));
+     customers.get(0).checking.setBalance(100);
+     customers.get(0).savings.setBalance(100);
+     customers.add(new Customer("Bob", "5678"));
+     customers.get(1).checking.setBalance(0);
+     customers.get(1).savings.setBalance(0);
+     customers.add(new Customer("Cindy", "9101"));
+     customers.get(2).checking.setBalance(0);
+     customers.get(2).savings.setBalance(0);
   } // end loadSampleCustomers
 
   public void loadCustomers(){
